@@ -15,7 +15,7 @@
  */
 package com.netflix.concurrency.limits.limit.window;
 
-public class AverageSampleWindowFactory implements SampleWindowFactory {
+public final class AverageSampleWindowFactory implements SampleWindowFactory {
     private static final AverageSampleWindowFactory INSTANCE = new AverageSampleWindowFactory();
 
     private AverageSampleWindowFactory() {}

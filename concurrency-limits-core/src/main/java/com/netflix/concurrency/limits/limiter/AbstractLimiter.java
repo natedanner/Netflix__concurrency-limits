@@ -40,7 +40,7 @@ public abstract class AbstractLimiter<ContextT> implements Limiter<ContextT> {
         protected String name = "unnamed-" + idCounter.incrementAndGet();
         protected MetricRegistry registry = EmptyMetricRegistry.INSTANCE;
 
-        private final Predicate<Object> ALWAYS_FALSE = (context) -> false;
+        private final Predicate<Object> ALWAYS_FALSE = context -> false;
         private Predicate<Object> bypassResolver = ALWAYS_FALSE;
 
         public BuilderT named(String name) {

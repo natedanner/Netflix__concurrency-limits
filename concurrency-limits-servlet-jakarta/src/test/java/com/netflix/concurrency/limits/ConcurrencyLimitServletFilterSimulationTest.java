@@ -50,9 +50,8 @@ public class ConcurrencyLimitServletFilterSimulationTest {
         AtomicInteger errors = new AtomicInteger();
         AtomicInteger success = new AtomicInteger();
 
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
-            System.out.println(String.format("errors=%d success=%d limit=%s", errors.getAndSet(0), success.getAndSet(0), limit));
-        }, 1, 1, TimeUnit.SECONDS);
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() ->
+            System.out.println(String.format("errors=%d success=%d limit=%s", errors.getAndSet(0), success.getAndSet(0), limit)), 1, 1, TimeUnit.SECONDS);
 
         while (true) {
             executor.execute(() -> {

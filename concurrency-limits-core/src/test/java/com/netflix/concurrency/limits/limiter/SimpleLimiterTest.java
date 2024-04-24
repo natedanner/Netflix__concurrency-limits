@@ -50,7 +50,7 @@ public class SimpleLimiterTest {
     public void testSimpleBypassLimiter() {
         SimpleLimiter<String> limiter = SimpleLimiter.<String>newBuilder()
                 .limit(FixedLimit.of(10))
-                .bypassLimitResolverInternal((context) -> context.equals("admin"))
+                .bypassLimitResolverInternal(context -> context.equals("admin"))
                 .build();
 
         for (int i = 0; i < 10; i++) {

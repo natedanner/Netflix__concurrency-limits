@@ -95,7 +95,7 @@ public final class ServletLimiterBuilder extends AbstractPartitionedLimiter.Buil
      * @return Chainable builder
      */
     public ServletLimiterBuilder bypassLimitByHeader(String name, String value) {
-        return bypassLimitResolver((context) -> value.equals(context.getHeader(name)));
+        return bypassLimitResolver(context -> value.equals(context.getHeader(name)));
     }
 
     /**
@@ -107,7 +107,7 @@ public final class ServletLimiterBuilder extends AbstractPartitionedLimiter.Buil
      * @return Chainable builder
      */
     public ServletLimiterBuilder bypassLimitByAttribute(String name, String value) {
-        return bypassLimitResolver((context) -> value.equals(context.getAttribute(name).toString()));
+        return bypassLimitResolver(context -> value.equals(context.getAttribute(name).toString()));
     }
 
     /**
@@ -119,7 +119,7 @@ public final class ServletLimiterBuilder extends AbstractPartitionedLimiter.Buil
      * @return Chainable builder
      */
     public ServletLimiterBuilder bypassLimitByParameter(String name, String value) {
-        return bypassLimitResolver((context) -> value.equals(context.getParameter(name)));
+        return bypassLimitResolver(context -> value.equals(context.getParameter(name)));
     }
 
     /**
@@ -129,7 +129,7 @@ public final class ServletLimiterBuilder extends AbstractPartitionedLimiter.Buil
      * @return Chainable builder
      */
     public ServletLimiterBuilder bypassLimitByPathInfo(String pathInfo) {
-        return bypassLimitResolver((context) -> pathInfo.equals(context.getPathInfo()));
+        return bypassLimitResolver(context -> pathInfo.equals(context.getPathInfo()));
     }
 
     /**
@@ -139,7 +139,7 @@ public final class ServletLimiterBuilder extends AbstractPartitionedLimiter.Buil
      * @return Chainable builder
      */
     public ServletLimiterBuilder bypassLimitByMethod(String method) {
-        return bypassLimitResolver((context) -> method.equals(context.getMethod()));
+        return bypassLimitResolver(context -> method.equals(context.getMethod()));
     }
 
     @Override

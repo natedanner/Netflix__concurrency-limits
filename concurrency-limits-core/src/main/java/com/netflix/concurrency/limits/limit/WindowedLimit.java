@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
-public class WindowedLimit implements Limit {
+public final class WindowedLimit implements Limit {
     private static final long DEFAULT_MIN_WINDOW_TIME = TimeUnit.SECONDS.toNanos(1);
     private static final long DEFAULT_MAX_WINDOW_TIME = TimeUnit.SECONDS.toNanos(1);
     private static final long DEFAULT_MIN_RTT_THRESHOLD = TimeUnit.MICROSECONDS.toNanos(100);
@@ -93,7 +93,7 @@ public class WindowedLimit implements Limit {
     /**
      * End time for the sampling window at which point the limit should be updated
      */
-    private volatile long nextUpdateTime = 0;
+    private volatile long nextUpdateTime;
 
     private final long minWindowTime;
 

@@ -107,9 +107,9 @@ public abstract class AbstractPartitionedLimiter<ContextT> extends AbstractLimit
         private final String name;
 
         private double percent = 0.0;
-        private int limit = 0;
-        private int busy = 0;
-        private long backoffMillis = 0;
+        private int limit;
+        private int busy;
+        private long backoffMillis;
         private MetricRegistry.SampleListener inflightDistribution;
 
         Partition(String name) {
@@ -256,8 +256,9 @@ public abstract class AbstractPartitionedLimiter<ContextT> extends AbstractLimit
                 }
             });
         } finally {
-            if (lock.isHeldByCurrentThread())
+            if (lock.isHeldByCurrentThread()) {
                 lock.unlock();
+            }
         }
     }
 

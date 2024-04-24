@@ -118,7 +118,7 @@ public final class GradientLimit extends AbstractLimit {
          * @return Chainable builder
          */
         public Builder queueSize(int queueSize) {
-            this.queueSize = (ignore) -> queueSize;
+            this.queueSize = ignore -> queueSize;
             return this;
         }
 
@@ -201,7 +201,7 @@ public final class GradientLimit extends AbstractLimit {
      */
     private volatile double estimatedLimit;
 
-    private long lastRtt = 0;
+    private long lastRtt;
 
     private final Measurement rttNoLoadMeasurement;
     
@@ -297,7 +297,7 @@ public final class GradientLimit extends AbstractLimit {
         }
 
         if (newLimit < estimatedLimit) {
-            newLimit = Math.max(minLimit, estimatedLimit * (1-smoothing) + smoothing*(newLimit));
+            newLimit = Math.max(minLimit, estimatedLimit * (1-smoothing) + smoothing*newLimit);
         }
         newLimit = Math.max(queueSize, Math.min(maxLimit, newLimit));
         

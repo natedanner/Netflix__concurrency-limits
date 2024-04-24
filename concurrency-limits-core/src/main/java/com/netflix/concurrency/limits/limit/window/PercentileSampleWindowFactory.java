@@ -17,7 +17,7 @@ package com.netflix.concurrency.limits.limit.window;
 
 import com.netflix.concurrency.limits.internal.Preconditions;
 
-public class PercentileSampleWindowFactory implements SampleWindowFactory {
+public final class PercentileSampleWindowFactory implements SampleWindowFactory {
     private final double percentile;
     private final int windowSize;
 

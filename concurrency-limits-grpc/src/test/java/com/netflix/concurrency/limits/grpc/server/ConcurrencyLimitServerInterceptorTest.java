@@ -115,9 +115,8 @@ public class ConcurrencyLimitServerInterceptorTest {
     @Test
     public void releaseOnError() {
         // Setup server
-        startServer((req, observer) -> {
-            observer.onError(Status.INVALID_ARGUMENT.asRuntimeException());
-        }, limiter);
+        startServer((req, observer) ->
+            observer.onError(Status.INVALID_ARGUMENT.asRuntimeException()), limiter);
 
         try {
             ClientCalls.blockingUnaryCall(channel, METHOD_DESCRIPTOR, CallOptions.DEFAULT, "foo");

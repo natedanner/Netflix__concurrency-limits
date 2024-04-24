@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 
 import static com.netflix.concurrency.limits.grpc.util.InterceptorTestUtil.METHOD_DESCRIPTOR;
 
-public class TestServer {
+public final class TestServer {
     private static final Logger LOG = LoggerFactory.getLogger(TestServer.class);
 
     private interface Segment {

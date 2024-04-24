@@ -36,7 +36,7 @@ import com.netflix.concurrency.limits.Limiter;
  * @param <ContextT>
  */
 public final class LifoBlockingLimiter<ContextT> implements Limiter<ContextT> {
-    public static class Builder<ContextT> {
+    public static final class Builder<ContextT> {
 
         private final Limiter<ContextT> delegate;
         private int maxBacklogSize = 100;
@@ -103,12 +103,12 @@ public final class LifoBlockingLimiter<ContextT> implements Limiter<ContextT> {
         }
 
         public LifoBlockingLimiter<ContextT> build() {
-            return new LifoBlockingLimiter<ContextT>(this);
+            return new LifoBlockingLimiter<>(this);
         }
     }
 
     public static <ContextT> Builder<ContextT> newBuilder(Limiter<ContextT> delegate) {
-        return new Builder<ContextT>(delegate);
+        return new Builder<>(delegate);
     }
 
     private final Limiter<ContextT> delegate;

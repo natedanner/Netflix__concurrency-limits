@@ -187,9 +187,8 @@ public class ConcurrencyLimitClientInterceptorTest {
                 .build();
         
         AtomicLong counter = new AtomicLong();
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
-            System.out.println(" " + counter.getAndSet(0) + " : " + limiter.toString());
-        }, 1, 1, TimeUnit.SECONDS);
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() ->
+            System.out.println(" " + counter.getAndSet(0) + " : " + limiter.toString()), 1, 1, TimeUnit.SECONDS);
         
         for (int i = 0 ; i < 10000000; i++) {
             counter.incrementAndGet();

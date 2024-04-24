@@ -9,10 +9,10 @@ import java.util.Optional;
 public class OptionalResultCaptor<T> implements Answer<Optional<T>> {
 
     public static <T> OptionalResultCaptor<T> forClass(Class<T> type) {
-        return new OptionalResultCaptor<T>();
+        return new OptionalResultCaptor<>();
     }
 
-    private Optional<T> result = null;
+    private Optional<T> result;
 
     public Optional<T> getResult() {
         return result;

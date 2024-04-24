@@ -69,7 +69,7 @@ public class PartitionedExample {
         final AtomicInteger counter = new AtomicInteger(0);
         System.out.println("iteration, limit, live, batch, live, batch, latency, shortRtt, longRtt");
 //        System.out.println("iteration, limit, 70%, 20%, 10%, 70%, 20%, 10%, latency, shortRtt, longRtt");
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() ->
             System.out.println(MessageFormat.format(
                     "{0,number,#}, {1,number,#}, {2,number,#}, {3,number,#}, {4,number,#}, {5,number,#}, {6,number,#}, {7,number,#}, {8,number,#}",
                     counter.incrementAndGet(), 
@@ -83,8 +83,7 @@ public class PartitionedExample {
                     TimeUnit.NANOSECONDS.toMillis(latency.getAndReset()),
                     limit.getLastRtt(TimeUnit.MILLISECONDS),
                     limit.getRttNoLoad(TimeUnit.MILLISECONDS)
-                    ))  ;
-        }, 1, 1, TimeUnit.SECONDS);
+                    )), 1, 1, TimeUnit.SECONDS);
 
         CompletableFuture.allOf(
                   driver1.runAsync()

@@ -18,13 +18,14 @@ public class LatencyCollector implements Consumer<Long> {
         }
 
         public long average() {
-            if (this.count == 0)
+            if (this.count == 0) {
                 return 0;
+            }
             return this.total / this.count;
         }
     }
 
-    AtomicReference<Metrics> foo = new AtomicReference<Metrics>(new Metrics());
+    AtomicReference<Metrics> foo = new AtomicReference<>(new Metrics());
 
     @Override
     public void accept(Long sample) {

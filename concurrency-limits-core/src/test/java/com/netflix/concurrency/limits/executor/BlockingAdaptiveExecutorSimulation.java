@@ -56,9 +56,8 @@ public class BlockingAdaptiveExecutorSimulation {
         AtomicInteger busy = new AtomicInteger();
         
         AtomicInteger counter = new AtomicInteger();
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
-            System.out.println("" + counter.incrementAndGet() + " total=" + requests.getAndSet(0) + " busy=" + busy.get());
-        }, 1, 1, TimeUnit.SECONDS);
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() ->
+            System.out.println("" + counter.incrementAndGet() + " total=" + requests.getAndSet(0) + " busy=" + busy.get()), 1, 1, TimeUnit.SECONDS);
 
         Semaphore sem = new Semaphore(limit, true);
         for (int i = 0; i < iterations; i++) {

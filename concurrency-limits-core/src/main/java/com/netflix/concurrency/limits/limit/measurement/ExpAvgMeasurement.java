@@ -23,7 +23,7 @@ public class ExpAvgMeasurement implements Measurement {
     private Double sum = 0.0;
     private final int window;
     private final int warmupWindow;
-    private int count = 0;
+    private int count;
 
     public ExpAvgMeasurement(int window, int warmupWindow) {
         this.window = window;

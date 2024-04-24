@@ -3,7 +3,7 @@ package com.netflix.concurrency.limits.limit.measurement;
 import java.util.function.Function;
 
 public class SingleMeasurement implements Measurement {
-    private Number value = null;
+    private Number value;
 
     @Override
     public Number add(Number sample) {

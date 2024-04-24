@@ -122,7 +122,7 @@ public final class Gradient2Limit extends AbstractLimit {
          * @return Chainable builder
          */
         public Builder queueSize(int queueSize) {
-            this.queueSize = (ignore) -> queueSize;
+            this.queueSize = ignore -> queueSize;
             return this;
         }
 
